@@ -1,7 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Local vs Git Remoto</title>
+  <link rel="stylesheet" href="./styles_css.css">
 </head>
 <body>
+<div class="container">
+  <div class="header">
+    <h1>🚀 Git Local vs Git Remoto</h1>
+    <p>Descubre las diferencias fundamentales entre repositorios locales y remotos</p>
+    <button class="toggle-button" onclick="toggleDemo()">💡 Ver Demo Interactiva</button>
+  </div>
 
+  <div class="comparison-container">
+    <div class="git-section git-local">
+      <h2 class="section-title">📱 Git Local</h2>
+      <ul class="feature-list">
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>💾 Almacenamiento:</strong> En tu computadora personal
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>⚡ Velocidad:</strong> Operaciones súper rápidas
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>🔒 Privacidad:</strong> Solo tú tienes acceso
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>💻 Trabajo offline:</strong> No necesita internet
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>🎯 Control total:</strong> Cambios inmediatos
+        </li>
+      </ul>
 
+      <div class="command-section">
+        <h3 class="command-title">🔥 Comandos Locales</h3>
+        <div class="command" onclick="copyCommand(this)">git init</div>
+        <div class="command" onclick="copyCommand(this)">git add .</div>
+        <div class="command" onclick="copyCommand(this)">git commit -m "mensaje"</div>
+        <div class="command" onclick="copyCommand(this)">git status</div>
+        <div class="command" onclick="copyCommand(this)">git log</div>
+      </div>
+    </div>
+
+    <div class="git-section git-remote">
+      <h2 class="section-title">🌐 Git Remoto</h2>
+      <ul class="feature-list">
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>☁️ Almacenamiento:</strong> En servidores (GitHub, GitLab)
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>👥 Colaboración:</strong> Trabajo en equipo
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>🔄 Sincronización:</strong> Actualización automática
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>💎 Respaldo:</strong> Copia de seguridad en la nube
+        </li>
+        <li class="feature-item" onclick="highlightFeature(this)">
+          <strong>🌍 Acceso global:</strong> Desde cualquier lugar
+        </li>
+      </ul>
+
+      <div class="command-section">
+        <h3 class="command-title">🚀 Comandos Remotos</h3>
+        <div class="command" onclick="copyCommand(this)">git clone [url]</div>
+        <div class="command" onclick="copyCommand(this)">git push origin main</div>
+        <div class="command" onclick="copyCommand(this)">git pull</div>
+        <div class="command" onclick="copyCommand(this)">git fetch</div>
+        <div class="command" onclick="copyCommand(this)">git remote -v</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="workflow-section">
+    <h2 class="workflow-title">🔄 Flujo de Trabajo Git</h2>
+    <div class="workflow-steps">
+      <div class="workflow-step" onclick="animateStep(this)">
+        <div class="step-number">1</div>
+        <h3>📝 Modificar</h3>
+        <p>Editas archivos localmente</p>
+      </div>
+      <div class="workflow-step" onclick="animateStep(this)">
+        <div class="step-number">2</div>
+        <h3>➕ Staging</h3>
+        <p>git add .</p>
+      </div>
+      <div class="workflow-step" onclick="animateStep(this)">
+        <div class="step-number">3</div>
+        <h3>💾 Commit</h3>
+        <p>git commit -m "cambio"</p>
+      </div>
+      <div class="workflow-step" onclick="animateStep(this)">
+        <div class="step-number">4</div>
+        <h3>🚀 Push</h3>
+        <p>git push origin main</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="interactive-demo" id="interactiveDemo">
+    <h2 style="color: #ffd93d; text-align: center; margin-bottom: 20px;">🎮 Demo Interactiva</h2>
+    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+      <p style="font-size: 1.2rem; margin-bottom: 15px;">
+        <strong>Escenario:</strong> Tienes un proyecto en tu computadora y quieres compartirlo con tu equipo.
+      </p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+        <div style="background: rgba(255,107,107,0.2); padding: 15px; border-radius: 8px;">
+          <h4 style="color: #ff6b6b;">🏠 Local (Tu PC)</h4>
+          <p>✅ Cambios guardados<br>✅ Commits realizados<br>❌ Solo tú puedes verlos</p>
+        </div>
+        <div style="background: rgba(78,205,196,0.2); padding: 15px; border-radius: 8px;">
+          <h4 style="color: #4ecdc4;">☁️ Remoto (GitHub)</h4>
+          <p>❌ Sin cambios nuevos<br>❌ Desactualizado<br>✅ Accessible por el equipo</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 20px;">
+        <button class="toggle-button" onclick="simulatePush()">🔄 Simular git push</button>
+        <div id="pushResult" style="margin-top: 15px; font-size: 1.1rem;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./script_js.js"></script>
 </body>
 </html>
